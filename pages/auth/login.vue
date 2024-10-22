@@ -9,8 +9,17 @@ const form = reactive({
   remember: false,
 });
 
-const handleSubmit = () => {
-  console.log(form);
+const errors = ref([]);
+
+const handleSubmit = async () => {
+  try {
+    const {data} = await $fetch("http://localhost:8000/api/login", {
+      method: 'POST',
+      body: {...form},
+    });
+  } catch (error) {
+    errors.value = error.data.errors;
+  }
 };
 
 </script>
@@ -23,12 +32,14 @@ const handleSubmit = () => {
         <form @submit.prevent="handleSubmit">
           <div class="mb-6">
             <FormLabel for="email">Email adresiniz</FormLabel>
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
             <FormInputText id="email" v-model="form.email" placeholder="Email adresinizi giriniz"/>
+            <span class="text-xs text-red-600" v-if="errors.email">{{ errors.email[0] }}</span>
           </div>
           <div class="mb-6">
             <FormLabel for="password">Parolanız</FormLabel>
             <FormInputText id="password" v-model="form.password" type="password" placeholder="Parolanızı giriniz"/>
+            <span class="text-xs text-red-600" v-if="errors.password">{{ errors.password[0] }}</span>
+
           </div>
           <div class="flex items-start mb-5">
             <div class="flex items-center h-5">
