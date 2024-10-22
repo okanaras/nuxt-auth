@@ -1,7 +1,9 @@
 <script setup>
 
 import SocialLogin from "~/components/SocialLogin.vue";
-import Primary from "~/components/Button/Primary.vue";
+import {useAuthStore} from "~/stores/auth.js";
+
+const auth = useAuthStore();
 
 const form = reactive({
   email: null,
@@ -13,10 +15,7 @@ const errors = ref([]);
 
 const handleSubmit = async () => {
   try {
-    const {data} = await $fetch("http://localhost:8000/api/login", {
-      method: 'POST',
-      body: {...form},
-    });
+    await auth.login(form);
   } catch (error) {
     errors.value = error.data.errors;
   }

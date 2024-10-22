@@ -8,6 +8,10 @@
               <h1 class="text-3xl font-bold">This is Home Page</h1>
               <p class="py-6">Welcome to the Home Page</p>
               <button class="btn btn-primary">Get Started</button>
+              <br>
+              <button class="btn btn-primary" @click="counter.increment()">
+                Counter, {{ counter.count }} - {{ counter.doubleCount }}
+              </button>
             </div>
           </div>
         </div>
@@ -15,3 +19,9 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import {useCounterStore} from "~/stores/counter.js";
+
+const counter = useCounterStore();
+</script>
