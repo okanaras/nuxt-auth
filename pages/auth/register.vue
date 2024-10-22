@@ -1,6 +1,21 @@
 <script setup>
-
 import SocialLogin from "~/components/SocialLogin.vue";
+
+const form = reactive({
+  name: null,
+  email: null,
+  password: null,
+  password_confirmation: null,
+  terms: false,
+});
+
+const handleSubmit = () => {
+  if (!form.terms) {
+    alert('Koşulları kabul etmelisiniz');
+    return;
+  }
+  console.log(form);
+};
 </script>
 
 <template>
@@ -8,51 +23,40 @@ import SocialLogin from "~/components/SocialLogin.vue";
     <div class="w-full">
       <div class="card bg-white p-8 rounded-lg shadow-xl md:w-3/4 mx-auto lg:w-1/3">
         <h3 class="text-center text-2xl font-semibold mb-6">Kayıt Ol</h3>
-        <form>
+        <form @submit.prevent="handleSubmit">
           <div class="mb-6">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-            <input type="email" id="email"
-                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                   placeholder="name@flowbite.com" required/>
+            <FormLabel for="name">Adınız</FormLabel>
+            <FormInputText id="name" placeholder="Adınızı giriniz" required v-model="form.name"/>
           </div>
           <div class="mb-6">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-              password</label>
-            <input type="password" id="password"
-                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                   required/>
+            <FormLabel for="email">Email adresi</FormLabel>
+            <FormInputText id="email" placeholder="Email adresinizi giriniz" required v-model="form.email"/>
           </div>
           <div class="mb-6">
-            <label for="repeat-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat
-              password</label>
-            <input type="password" id="repeat-password"
-                   class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                   required/>
+            <FormLabel for="password">Parolanız</FormLabel>
+            <FormInputText id="password" type="password" placeholder="Parolanızı giriniz" required
+                           v-model="form.password"/>
+          </div>
+          <div class="mb-6">
+            <FormLabel for="password_confirmation">Parola Tekrarı</FormLabel>
+            <FormInputText id="password_confirmation" type="password" placeholder="Parola tekrarı giriniz" required
+                           v-model="form.password_confirmation"/>
           </div>
           <div class="flex items-start mb-5">
             <div class="flex items-center h-5">
-              <input id="terms" type="checkbox" value=""
-                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                     required/>
+              <FormInputText id="terms" type="checkbox" v-model="form.terms"/>
             </div>
-            <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a
-                href="#"
-                class="text-blue-600 hover:underline dark:text-blue-500">terms
-              and conditions</a></label>
+            <FormLabel for="terms" custom-class="ms-2 dark:text-gray-300">
+              <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">Koşulları okudum</a>, kabul ediyorum.
+            </FormLabel>
           </div>
-          <button type="submit"
-                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Kayıt Ol
-          </button>
+
+          <ButtonPrimary type="submit">Kayıt Ol</ButtonPrimary>
         </form>
 
         <SocialLogin/>
       </div>
     </div>
   </div>
-
 </template>
 
-<style scoped>
-
-</style>
