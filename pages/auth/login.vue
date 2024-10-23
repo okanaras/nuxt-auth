@@ -2,6 +2,14 @@
 
 import SocialLogin from "~/components/SocialLogin.vue";
 import {useAuthStore} from "~/stores/auth.js";
+import {reactive, ref} from "vue";
+
+definePageMeta({
+  title: 'Giriş Yap',
+  description: 'Giriş yap sayfası',
+  url: 'https://localhost:3000/auth/login',
+  middleware: ['guest-middleware'],
+});
 
 const auth = useAuthStore();
 // const token = useTokenStore();

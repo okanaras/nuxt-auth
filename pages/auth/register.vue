@@ -1,5 +1,14 @@
 <script setup>
 import SocialLogin from "~/components/SocialLogin.vue";
+import {useAuthStore} from "~/stores/auth.js";
+import {reactive, ref} from "vue";
+
+definePageMeta({
+  title: 'Kayıt Ol',
+  description: 'Kayıt ol sayfası',
+  url: 'https://localhost:3000/auth/register',
+  middleware: ['guest-middleware'],
+});
 
 const auth = useAuthStore();
 

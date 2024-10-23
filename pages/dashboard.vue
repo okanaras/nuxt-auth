@@ -1,5 +1,12 @@
 <script setup>
-import {useAuthStore} from '~/stores/auth.js'
+import {useAuthStore} from '~/stores/auth.js';
+
+definePageMeta({
+  title: 'Anasayfa',
+  description: 'Ana sayfa',
+  url: 'https://localhost:3000/dashboard',
+  middleware: ['auth-middleware'],
+});
 
 const auth = useAuthStore();
 
