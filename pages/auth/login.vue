@@ -4,10 +4,11 @@ import SocialLogin from "~/components/SocialLogin.vue";
 import {useAuthStore} from "~/stores/auth.js";
 
 const auth = useAuthStore();
+// const token = useTokenStore();
 
 const form = reactive({
-  email: null,
-  password: null,
+  email: 'test@gmail.com',
+  password: 'password',
   remember: false,
 });
 
@@ -48,7 +49,8 @@ const handleSubmit = async () => {
               Beni hatırla
             </FormLabel>
           </div>
-          <ButtonPrimary type="submit">Giriş Yap</ButtonPrimary>
+          <ButtonPrimary>Giriş Yap</ButtonPrimary>
+          <!--          <ButtonPrimary @click.prevent="token.removeToken()">Remove</ButtonPrimary>-->
         </form>
 
         <SocialLogin/>

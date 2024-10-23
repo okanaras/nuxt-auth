@@ -4,7 +4,8 @@ export default defineNuxtConfig({
     devtools: {enabled: false}, // devtools u devre devre dışı bırakmak için false yapmak gerekiyor
     modules: [
         '@nuxtjs/tailwindcss',
-        '@pinia/nuxt'
+        '@pinia/nuxt',
+        'pinia-plugin-persistedstate/nuxt',
     ],
 
     imports: {
