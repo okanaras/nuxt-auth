@@ -39,6 +39,24 @@ export const useAuthStore = defineStore('auth', {
             }
         },
 
+        async logout() {
+            const tokenStore = useTokenStore();
+            try {
+                const res = await $fetch("http://localhost:8000/api/logout", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'Authorization': `Bearer ${tokenStore.getToken}`,
+                    }
+                });
+
+                tokenStore.removeToken();
+            } catch (error) {
+                throw error;
+            }
+        },
+
         commonSetter(data) {
             const tokenStore = useTokenStore();
             tokenStore.setToken(data.token);
