@@ -6,7 +6,7 @@ import {reactive, ref} from "vue";
 definePageMeta({
   title: 'Kayıt Ol',
   description: 'Kayıt ol sayfası',
-  url: 'https://localhost:3000/auth/register',
+  url: 'https://okanaras.com.tr/auth/register',
   middleware: ['guest-middleware'],
 });
 

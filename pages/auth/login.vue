@@ -7,7 +7,7 @@ import {reactive, ref} from "vue";
 definePageMeta({
   title: 'Giriş Yap',
   description: 'Giriş yap sayfası',
-  url: 'https://localhost:3000/auth/login',
+  url: 'https://okanaras.com.tr/auth/login',
   middleware: ['guest-middleware'],
 });
 
@@ -15,8 +15,8 @@ const auth = useAuthStore();
 // const token = useTokenStore();
 
 const form = reactive({
-  email: 'test@gmail.com',
-  password: 'password',
+  email: '',
+  password: '',
   remember: false,
 });
 

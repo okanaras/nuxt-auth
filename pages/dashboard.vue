@@ -4,7 +4,7 @@ import {useAuthStore} from '~/stores/auth.js';
 definePageMeta({
   title: 'Anasayfa',
   description: 'Ana sayfa',
-  url: 'https://localhost:3000/dashboard',
+  url: 'https://okanaras.com.tr/dashboard',
   middleware: ['auth-middleware'],
 });
 
