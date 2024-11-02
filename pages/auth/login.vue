@@ -35,7 +35,8 @@ const handleSubmit = async () => {
 <template>
   <div class="min-h-screen flex items-center">
     <div class="w-full">
-      <div class="card bg-white p-8 rounded-lg shadow-xl md:w-3/4 mx-auto lg:w-1/3">
+      <div
+          class="card bg-white text-black dark:text-white dark:!bg-gray-700 p-8 rounded-lg shadow-xl md:w-3/4 mx-auto lg:w-1/3">
         <h3 class="text-center text-2xl font-semibold mb-6">Giriş Yap</h3>
         <form @submit.prevent="handleSubmit">
           <div class="mb-6">

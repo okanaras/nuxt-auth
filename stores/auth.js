@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('auth', {
     actions: {
         async login(formData) {
             try {
-                const {data} = await $fetch("https://okanaras.com.tr/api/login", {
+                const {data} = await $fetch("https://api.okanaras.com.tr/api/login", {
                     method: 'POST',
                     body: {...formData},
                 });
@@ -29,7 +29,7 @@ export const useAuthStore = defineStore('auth', {
 
         async register(formData) {
             try {
-                const {data} = await $fetch("https://okanaras.com.tr/api/register", {
+                const {data} = await $fetch("https://api.okanaras.com.tr/api/register", {
                     method: 'POST',
                     body: {...formData},
                 });
@@ -42,7 +42,7 @@ export const useAuthStore = defineStore('auth', {
         async logout() {
             const tokenStore = useTokenStore();
             try {
-                const res = await $fetch("https://okanaras.com.tr/api/logout", {
+                const res = await $fetch("https://api.okanaras.com.tr/api/logout", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
